@@ -1,3 +1,0 @@
-All input data should be stored in this folder.
-
-No files in this folder will be picked up by Github.

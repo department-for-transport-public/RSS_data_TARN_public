@@ -1,3 +1,0 @@
-All sensitive outputs (e.g. html files, data tables, etc) should be stored in this folder.
-
-No files in this folder will be picked up by Github.
