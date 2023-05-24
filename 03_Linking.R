@@ -84,7 +84,7 @@ for (idx in 1:nrow(TARN)){
   }
 }
 
-rm(match_record, TARN_record, STATS19_record) #no longer need to keep the individual record details after looping through all cases
+rm(match_candidates_record, TARN_record, STATS19_record) #no longer need to keep the individual record details after looping through all cases
 
 ################################################################################
 
@@ -171,8 +171,8 @@ match_candidates_probs$w_distance <- case_when(is.na(match_candidates_probs$u_di
                                       match_candidates_probs$distances_miles  > 2  ~ log((1 - match_candidates_probs$m_distance)/(1-match_candidates_probs$u_distance)),
                                       TRUE ~ 0)
 match_candidates_probs$w_hospital <- case_when(is.na(match_candidates_probs$u_hospital) ~ 0, 
-                                      match_candidates_probs$distances_hospital <= 30 ~ log(match_candidates_probs$m_hospital/match_candidates_probs$u_hospita),
-                                      match_candidates_probs$distances_hospital  > 30  ~ log((1 - match_candidates_probs$m_hospita)/(1-match_candidates_probs$u_hospita)),
+                                      match_candidates_probs$distances_hospital <= 30 ~ log(match_candidates_probs$m_hospital/match_candidates_probs$u_hospital),
+                                      match_candidates_probs$distances_hospital  > 30  ~ log((1 - match_candidates_probs$m_hospital)/(1-match_candidates_probs$u_hospital)),
                                       TRUE ~ 0)
 
 #Home postcode (district) agreement
@@ -244,7 +244,8 @@ matches_best <- match_candidates_probs %>%
 #Currently there are 12 cases where manual amendments are made, focussing on e-scooters
 #The number of review matches for pedal cyclists and motorcyclists is larger and has not yet been addressed  
 
-TARN_review <- readxl::read_xlsx(paste0(folder, "/", matches_review))
+TARN_review <- readxl::read_xlsx(paste0(folder, "/", matches_review),
+                                 col_types = c("text","text"))
 
 #Update the list of matches with the new status as amended by manual review
 
