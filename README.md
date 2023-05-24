@@ -25,3 +25,16 @@ The repository contains two issue templates which are loaded automatically; one 
 ## Contact 
 
 Aside from directly in Git by raising an issue, any feedback can be provided to the [road safty statistics team](mailto:roadacc.stats@dft.gov.uk) at DfT
+
+## Acknowledgements 
+
+We are grateful to the TARN team for the provision of data to facilitate the development of this linkage.  All work and any errors are the responisbility of the road safety statistics team at DfT.
+
+ONS Postcode data obtained from the ONS Postcode Directory is used in the linkage methodiology 
+Contains OS data © Crown copyright and database right [2023]
+Contains Royal Mail data © Royal Mail copyright and database right [2023]
+Source: Office for National Statistics licensed under the Open Government Licence v.3.0
+
+
+
+
