@@ -67,13 +67,13 @@ TARN <- readxl::read_xlsx(base::paste0(folder,"/",data_tarn),
     dplyr::mutate(Arrival_YearDay = lubridate::yday(Arrival_Date), Incident_YearDay = lubridate::yday(Incident_Date)) %>%
 
 #Restrict to arrival at hosp up to mid-2022 only, where assume TARN data substantially complete.  Use arrival as incident year often missing
-dplyr::filter((Arrival_Year == 2020 | Arrival_Year == 2021 | Arrival_Year == 2022 & Arrival_Month <= 6)) %>% 
+dplyr::filter((Arrival_Year == 2020 | Arrival_Year == 2021 | (Arrival_Year == 2022 & Arrival_Month <= 6))) %>% 
   
   #Create additional date variable for matching, which takes incident date if available, else arrival date (only day, not time)
-  dplyr::mutate(Match_Year = dplyr::if_else(Incident_Year < 2020, Arrival_Year, Incident_Year),
-                Match_Month = dplyr::if_else(Incident_Month < 0, Arrival_Month, Incident_Month),
-                Match_Day = dplyr::if_else(Incident_Day < 0, Arrival_Day, Incident_Day),
-                Match_YearDay = dplyr::if_else(Incident_YearDay < 0, Arrival_YearDay, Incident_YearDay)) %>%
+  dplyr::mutate(Match_Year = dplyr::if_else(is.na(Incident_Year), Arrival_Year, Incident_Year),
+                Match_Month = dplyr::if_else(is.na(Incident_Month), Arrival_Month, Incident_Month),
+                Match_Day = dplyr::if_else(is.na(Incident_Day), Arrival_Day, Incident_Day),
+                Match_YearDay = dplyr::if_else(is.na(Incident_YearDay), Arrival_YearDay, Incident_YearDay)) %>%
   
   #Format the postcode variable for matching to STATS19 (e.g. removing spaces) and flag where postcode district is valid
   dplyr::mutate(Home_PostcodeDistrict = stringr::word(Home_Postcode,1)) %>% 
