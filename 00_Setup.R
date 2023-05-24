@@ -25,8 +25,7 @@ library(lubridate) #for working with date variables (tidyverse but not loaded as
 
 folder <- 
   file.path(
-    "~",
-    "g","AFP","RLTDAll","STS","007 ROAD SAFETY STATISTICS","017 HOSPITAL DATA","0002 TARN_public",
+    "Data",
     fsep = "/"
   )
 
@@ -34,17 +33,18 @@ folder <-
 
 ## SPECIFY DATA FILENAMES
 
-#These input files should all be located within the above specified folder
+#These input files should all be located within the Data folder (unless otherwise specified)
+#Within this project, sample/dummy files have been loaded to show the format of the data - these should allow the code to run but will not produce meaningful results
 
-data_tarn <- "Data_TARN.xlsx"
-data_tarn_amendment <- "Data_TARN_amendments.xlsx"
-data_stats19 <- "Data_STATS19.xlsx"
+data_tarn <- "Data_TARN_dummy.xlsx"  #this is made up data, 10 records, showing the format of the TARN data used (without postcode information)
+data_tarn_amendment <- "TARN_amendments_template.xlsx"  #this is a blank template showing the format for reading in any amendments required to road user type in TARN
+data_stats19 <- "Data_STATS19_sample.xlsx" #this is a sample of real STATS19 open data, 100 rows, without the postcode information, to show the format of the file
 
-lookup_probabilities <- "Lookup_u_probabilities.xlsx"
-lookup_postcode <- "Lookup_postcode.csv"
-lookup_postcode_district <- "Lookup_postcode_district.xlsx"
+lookup_probabilities <- "Lookup_u_probabilities.xlsx" #probabilities of agreement on linkage variables (full file)
+lookup_postcode <- "Lookup_postcode_sample.csv"  #this is a sample of the postcode lookup, 10 records only, showing the file format
+lookup_postcode_district <- "Lookup_postcode_district.xlsx" #postcode districts with Eastings and Northings added (full file)
 
-matches_review <- "Matches_ManualReview.xlsx"
+matches_review <- "Manual_review_template.xlsx" #this is a blank template showing the format for reading in any amendments required as a result of manual review
 
 #Also specify names for saving outputs
 
