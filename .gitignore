@@ -44,9 +44,6 @@ vignettes/*.pdf
 Outputs/
 
 # Common data filetypes
-*.xlsx
-*.xls
-*.csv
 *.ods
 .Rproj.user
 
